@@ -1,115 +1,101 @@
+// server.js
+
 import express from 'express';
-import { MongoClient } from 'mongodb';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { User } from './models/user.js';
 import cors from 'cors';
+import { User } from './models/user.js';
 
-dotenv.config();
-
-
+dotenv.config();  // Load environment variables from .env file
 
 const app = express();
 const port = 3000;
 
-app.use(cors(
-    {
-        origin: 'http://localhost:4200',
-        methods: ['GET', 'POST' , 'PUT', 'DELETE'],
-        credentials: true,
-        allowedHeaders: ['Content-Type', 'Authorization'],
-    }
-));
+// Middleware to parse JSON and handle CORS
+app.use(cors({
+  origin: 'http://localhost:4200',  // Adjust for your frontend's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+app.use(express.json());  // Middleware to parse JSON body in requests
 
-const uri = "mongodb://root:h1yoVQDdUbz2D57M@ac-1vayapq-shard-00-00.yhftboa.mongodb.net:27017,ac-1vayapq-shard-00-01.yhftboa.mongodb.net:27017,ac-1vayapq-shard-00-02.yhftboa.mongodb.net:27017/?replicaSet=atlas-11jud3-shard-0&ssl=true&authSource=admin&retryWrites=true&w=majority&appName=test101"
-const client = new MongoClient(uri);
-const dbName = 'wad';
-const collectionName = 'profiles';
+// Connect to local MongoDB using Mongoose
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('✅ Connected to Local MongoDB'))
+  .catch(err => console.log('❌ Connection error:', err));
 
-app.use(express.json());
+// Register Route
+app.post('/register', async (req, res) => {
+  const { name, email, password } = req.body;
 
-app.post("/register" , async(req , res) =>{
-    const { name , email , password } = req.body;
-
-    const user = new User({ name , email , password });
-
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const result = await collection.insertOne(user);
-
-    client.close();
-
-    if (result != null) {
-        res.status(200).json({user });
-    }
-    else{
-        res.status(401).json({ message: "Error registering user" });
-    }
+  try {
+    const user = new User({ name, email, password });
+    await user.save();
+    res.status(200).json({ user });
+  } catch (err) {
+    res.status(400).json({ message: 'Registration failed', error: err.message });
+  }
 });
 
-app.post("/login" , async (req , res) =>{
-    const { email , password } = req.body;
+// Login Route
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const user = await collection.findOne({ email , password });
-
-    client.close();
-
+  try {
+    const user = await User.findOne({ email, password });
     if (user) {
-        res.status(200).json({ user });
+      res.status(200).json({ user });
+    } else {
+      res.status(401).json({ message: 'Invalid credentials' });
     }
-    else{
-        res.status(401).json({ message: "Invalid credentials" });
-    }
+  } catch (err) {
+    res.status(400).json({ message: 'Login failed', error: err.message });
+  }
 });
 
-app.put("/update" , async (req , res) =>{
-    const { name , email , password } = req.body;
+// Update Route
+app.put('/update', async (req, res) => {
+  const { name, email, password } = req.body;
 
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const user = await collection.findOne({ email });
-
-    user.name = req.body.name;
-    user.email = req.body.email;    
-    user.password = req.body.password;
-
-    
-    if (user) {
-        const result = await collection.updateOne({ email }, {$set : user});
-        res.status(200).json({ result });
-        client.close();
-    }
-    else{
-        res.status(401).json({ message: "Invalid credentials" });
-    }
-})
-
-app.delete("/delete" , async (req , res) =>{
-    const { email } = req.body;
-
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const user = await collection.findOne({ email });
+  try {
+    const user = await User.findOneAndUpdate(
+      { email },
+      { name, password },
+      { new: true }  // Return the updated user
+    );
 
     if (user) {
-        const result = await collection.deleteOne({ email });
-        res.status(200).json({ result });
-        client.close();
+      res.status(200).json({ user });
+    } else {
+      res.status(404).json({ message: 'User not found' });
     }
-    else{
-        res.status(401).json({ message: "Invalid credentials" });
-    }
-})
+  } catch (err) {
+    res.status(400).json({ message: 'Update failed', error: err.message });
+  }
+});
 
-app.listen(port , () => {
-    console.log(`Server is running on port ${port}`);
-})
+// Delete Route
+app.delete('/delete', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const result = await User.deleteOne({ email });
+
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: 'User deleted' });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (err) {
+    res.status(400).json({ message: 'Delete failed', error: err.message });
+  }
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`🚀 Server running on http://localhost:${port}`);
+});
