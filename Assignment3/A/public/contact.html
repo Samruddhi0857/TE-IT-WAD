@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #f0f0f0, #e0e0ff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      margin-top: 20px;
+      display: inline-block;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <form action="/contact" method="POST">
+    <label>Name:
+      <input type="text" name="name" required />
+    </label>
+    <label>Email:
+      <input type="email" name="email" required />
+    </label>
+    <label>Message:
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+  <a href="/">Go back to Home</a>
+</body>
+</html>

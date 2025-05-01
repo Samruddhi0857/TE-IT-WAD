@@ -1,0 +1,136 @@
+//Need only if cart open  in new page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <style>
+    #cart-list li {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+    #cart-list li:last-child {
+      border-bottom: none;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+    }
+    .item-details {
+      flex-grow: 1;
+      margin-left: 15px;
+    }
+    .item-details h4 {
+      font-size: 1em;
+      margin-bottom: 5px;
+    }
+    .item-details p {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 2px;
+    }
+    .item-details .quantity {
+      font-size: 0.9em;
+      color: #888;
+    }
+    #total-price {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 15px;
+      text-align: right;
+    }
+    .cart-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .cart-buttons a,
+    .cart-buttons button {
+      flex: 1;
+      font-size: 1em;
+      border-radius: 5px;
+    }
+    .clear-cart-btn {
+      background-color: #dc3545 !important;
+      color: white !important;
+      border: none;
+    }
+    .clear-cart-btn:hover {
+      background-color: #a71d2a !important;
+    }
+  </style>
+</head>
+<body>
+
+<div data-role="page" id="cart">
+  <div data-role="header">
+    <h1>Your Cart</h1>
+  </div>
+
+  <div data-role="content">
+    <ul id="cart-list" data-role="listview" data-inset="true"></ul>
+    <div id="total-price"></div>
+
+    <div class="cart-buttons">
+      <button class="clear-cart-btn ui-btn" onclick="clearCart()">Clear Cart</button>
+      <a href="index.html" data-role="button" data-transition="slide" class="ui-btn ui-corner-all ui-shadow">Back to Products</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function updateCartUI() {
+    const $cartList = $('#cart-list');
+    $cartList.empty();
+
+    if (cart.length === 0) {
+      $cartList.append('<li>Your cart is empty.</li>');
+      $('#total-price').text('');
+    } else {
+      let total = 0;
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        $cartList.append(`
+          <li>
+            <div class="cart-item">
+              <div class="item-details">
+                <h4>${item.name}</h4>
+                <p>Price: $${item.price.toFixed(2)}</p>
+                <p class="quantity">Quantity: ${item.quantity}</p>
+              </div>
+            </div>
+          </li>
+        `);
+      });
+      $('#total-price').text(`Total: $${total.toFixed(2)}`);
+    }
+
+    if ($cartList.hasClass('ui-listview')) {
+      $cartList.listview('refresh');
+    } else {
+      $cartList.listview();
+    }
+  }
+
+  function clearCart() {
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartUI();
+    alert("Cart cleared.");
+  }
+
+  $(document).on("pageshow", "#cart", updateCartUI);
+  $(document).ready(updateCartUI);
+</script>
+
+</body>
+</html>

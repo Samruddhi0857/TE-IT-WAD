@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Shop</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+    }
+
+    .product, .cart-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product img, .cart-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-details {
+      flex: 1;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .clear-cart {
+      background-color: red;
+      color: white;
+      border: none;
+    }
+
+    #cart {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Products</h2>
+  <div id="products">
+    <div class="product">
+      <img src="https://www.giva.co/cdn/shop/files/BR0313_1_0ab0ac3c-4a98-474b-9238-bad59162f900.jpg?v=1706174479&width=713" alt="Bracelet A">
+      <div class="product-details">
+        <p><strong>Bracelet A</strong> - $10</p>
+        <button class="add" data-name="Bracelet A" data-price="10" data-img="https://www.giva.co/cdn/shop/files/BR0313_1_0ab0ac3c-4a98-474b-9238-bad59162f900.jpg?v=1706174479&width=713">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://www.giva.co/cdn/shop/files/BR0922_R01610_1.jpg?v=1703765823&width=713" alt="Product 5" alt="Bracelet B">
+      <div class="product-details">
+        <p><strong>Bracelet B</strong> - $15</p>
+        <button class="add" data-name="Bracelet B" data-price="15" data-img="https://www.giva.co/cdn/shop/files/BR0922_R01610_1.jpg?v=1703765823&width=713">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://www.giva.co/cdn/shop/files/BR0699_1.jpg?v=1696593415&width=713" alt="Bracelet C">
+      <div class="product-details">
+        <p><strong>Bracelet C</strong> - $20</p>
+        <button class="add" data-name="Bracelet C" data-price="20" data-img="https://www.giva.co/cdn/shop/files/BR0699_1.jpg?v=1696593415&width=713">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p id="total">Total: $0</p>
+    <button class="clear-cart">Clear Cart</button>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function updateCart() {
+      let $cartItems = $("#cart-items");
+      $cartItems.empty();
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        $cartItems.append(`
+          <div class="cart-item">
+            <img src="${item.img}" alt="${item.name}">
+            <div>
+              <p><strong>${item.name}</strong></p>
+              <p>Price: $${item.price}</p>
+              <p>Quantity: ${item.quantity}</p>
+              <button onclick="removeItem(${index})">Remove</button>
+            </div>
+          </div>
+        `);
+      });
+
+      $("#total").text("Total: $" + total);
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    $(".add").on("click", function() {
+      const name = $(this).data("name");
+      const price = parseFloat($(this).data("price"));
+      const img = $(this).data("img");
+
+      let existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1, img });
+      }
+      updateCart();
+    });
+
+    $(".clear-cart").on("click", function() {
+      cart = [];
+      updateCart();
+    });
+  </script>
+
+</body>
+</html>

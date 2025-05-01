@@ -1,0 +1,47 @@
+
+GitHub Commands Everyone Should Know
+------------------------------------
+- git clone <repository-url>
+- git status
+- git add <file-name> / git add .
+- git commit -m "commit message"
+- git push origin <branch-name>
+- git pull origin <branch-name>
+- git checkout -b <new-branch-name>
+- git checkout <branch-name>
+- git branch -d <branch-name>
+- git log
+
+Push Program from VS Code to GitHub
+-----------------------------------
+1. git init
+2. git remote add origin <repository-url>
+3. git add .
+4. git commit -m "Initial commit"
+5. git push -u origin master
+
+Create New Repository from VS Code
+----------------------------------
+- Initialize Git: git init
+- Create new repo on GitHub manually
+- Add remote: git remote add origin <repository-url>
+- Push code: git add . , git commit -m "message", git push -u origin master
+
+Make Changes in VS Code and Upload to GitHub
+--------------------------------------------
+1. Edit files in VS Code
+2. git status
+3. git add <file-name> or git add .
+4. git commit -m "Updated file with changes"
+5. git push origin <branch-name>
+
+Delete Repository from GitHub
+-----------------------------
+- Go to GitHub > Repository Settings > Danger Zone > Delete Repository
+
+Delete a File from VS Code and GitHub
+-------------------------------------
+1. Delete file in VS Code
+2. git add -A
+3. git commit -m "Deleted file"
+4. git push origin <branch-name>

@@ -1,0 +1,16 @@
+<form #formRef="ngForm" (ngSubmit)="register()" novalidate>
+
+    <input [(ngModel)]="user.name" name="name" required placeholder="Enter name" />
+    <div *ngIf="formRef.submitted && !user.name" style="color:red">Name is required</div>
+  
+    <input [(ngModel)]="user.email" name="email" required placeholder="Enter email" />
+    <div *ngIf="formRef.submitted && !user.email" style="color:red">Email is required</div>
+  
+    <input [(ngModel)]="user.password" name="password" type="password" required placeholder="Enter password" />
+    <div *ngIf="formRef.submitted && !user.password" style="color:red">Password is required</div>
+  
+    <button type="submit" [disabled]="formRef.invalid">Register</button>
+  
+  </form>
+  
+<a routerLink="/login">Already have an account? Login</a>
