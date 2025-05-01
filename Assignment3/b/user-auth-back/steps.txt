@@ -1,0 +1,16 @@
+## ⚙️ Backend Setup (`user-auth-back`)
+
+### 1. Install dependencies
+
+cd Assignment3/b/user-auth-back
+npm install
+
+
+2. Create .env file
+Create a file named .env in the user-auth-back folder with this content
+MONGO_URI=mongodb://localhost:27017/wad
+
+
+3.Run server
+  node index.js
+
