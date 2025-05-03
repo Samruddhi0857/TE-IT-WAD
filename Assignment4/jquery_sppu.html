@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPPU - Savitribai Phule Pune University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    header {
+      background: teal;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    nav {
+      background: #006666;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+    }
+    .banner {
+      width: 100%;
+      height: auto;
+    }
+    .section {
+      padding: 15px;
+    }
+    .section h3 {
+      border-bottom: 2px solid teal;
+      padding-bottom: 5px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .grid div {
+      background: #f2f2f2;
+      padding: 10px;
+      flex: 1 1 30%;
+      border-radius: 5px;
+    }
+    footer {
+      background: #004d4d;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    @media(max-width: 768px) {
+      .grid div {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Savitribai Phule Pune University</h1>
+  <p>सावित्रीबाई फुले पुणे विद्यापीठ</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Academics</a>
+  <a href="#">Research</a>
+  <a href="#">Contact</a>
+</nav>
+
+<img src="https://unipune.ac.in/images/1.jpg" alt="SPPU Banner" class="banner">
+
+<div class="section">
+  <h3>Quick Links</h3>
+  <div class="grid">
+    <div>Admissions</div>
+    <div>Syllabi</div>
+    <div>Examination</div>
+    <div>Scholarships</div>
+    <div>Finance & Accounts</div>
+    <div>Sports Section</div>
+    <div>SET Exam</div>
+    <div>Job Openings</div>
+    <div>Library</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Research Publications (2011 - Onwards)</h3>
+  <div class="grid">
+    <div><strong>Publications</strong><br>Journal Articles (8015)<br>Books (579)<br>Chapters (962)<br>Conference (1133)</div>
+    <div><strong>Teachers</strong><br>Sastry Tamma<br>Tupe Navnath<br>Kumbhar Avinash</div>
+    <div><strong>Departments</strong><br>Environmental Sciences<br>Economics<br>Management</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Press Release</h3>
+  <p>सुरक्षा आणि राष्ट्रवाद या विषयावर राष्ट्रीय परिसंवाद संपन्न</p>
+  <a href="#">View All Press Releases</a>
+</div>
+
+<footer>
+  <p>&copy; 2025 Savitribai Phule Pune University</p>
+</footer>
+
+</body>
+</html>
