@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Cart with jQuery Mobile</title>
+
+  <!-- jQuery & jQuery Mobile -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .product {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+
+    .product img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 8px;
+    }
+
+    .product-details p {
+      margin: 5px 0;
+    }
+
+    .cart-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    #cart {
+      margin-top: 30px;
+    }
+
+    #cart h2 {
+      margin-top: 0;
+    }
+
+    #total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .cart-item img {
+      float: left;
+      margin-right: 10px;
+      border-radius: 6px;
+    }
+
+    .cart-item button {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div data-role="page" id="cartPage">
+
+  <div data-role="header">
+    <h1>Simple Cart</h1>
+  </div>
+
+  <div data-role="content">
+    <div class="products">
+      <div class="product">
+        <img src="img.jpg" alt="bracelet1">
+        <div class="product-details">
+          <p><strong>Bracelet 1</strong></p>
+          <button class="add-to-cart" data-role="button" data-theme="b" data-name="Bracelet 1" data-price="10" data-img="img.jpg">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="img.jpg" alt="bracelet2">
+        <div class="product-details">
+          <p><strong>Bracelet 2</strong></p>
+          <button class="add-to-cart" data-role="button" data-theme="b" data-name="Bracelet 2" data-price="15" data-img="img.jpg">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="img.jpg" alt="bracelet3">
+        <div class="product-details">
+          <p><strong>Bracelet 3</strong></p>
+          <button class="add-to-cart" data-role="button" data-theme="b" data-name="Bracelet 3" data-price="20" data-img="img.jpg">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="cart">
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <p id="total">Total: $0</p>
+      <button id="clear-cart" data-role="button" data-theme="a">Clear Cart</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const cart = [];
+
+  function updateCartDisplay() {
+    const $cartContainer = $("#cart-items");
+    $cartContainer.empty();
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
+
+      $cartContainer.append(`
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" width="50">
+          <p><strong>${item.name}</strong></p>
+          <p>Price: $${item.price}</p>
+          <p>Qty: ${item.quantity}</p>
+          <button onclick="removeFromCart(${index})" data-role="button" data-theme="c">Remove</button>
+        </div>
+      `);
+    });
+
+    $("#total").text("Total: $" + total);
+    $("#cart-items").trigger("create"); // Apply jQuery Mobile styles
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartDisplay();
+  }
+
+  $(document).on("click", ".add-to-cart", function () {
+    const productName = $(this).data("name");
+    const productPrice = parseFloat($(this).data("price"));
+    const productImage = $(this).data("img");
+
+    const existingProduct = cart.find(item => item.name === productName);
+
+    if (existingProduct) {
+      existingProduct.quantity++;
+    } else {
+      cart.push({ name: productName, price: productPrice, quantity: 1, image: productImage });
+    }
+
+    updateCartDisplay();
+  });
+
+  $(document).on("click", "#clear-cart", function () {
+    cart.length = 0;
+    updateCartDisplay();
+  });
+</script>
+
+</body>
+</html>
