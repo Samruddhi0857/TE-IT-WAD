@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Patient Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label, input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .count {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Patient Registration</h2>
+
+    <form id="registrationForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter full name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" placeholder="Enter age" required>
+
+      <label for="contact">Contact Number</label>
+      <input type="tel" id="contact" placeholder="Enter contact number" required>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="count">
+      Patients Registered: <span id="patientCount">0</span>
+    </div>
+  </div>
+
+  <script>
+    // Initialize count from localStorage or set to 0
+    let patientCount = localStorage.getItem('patientCount') || 0;
+    document.getElementById('patientCount').textContent = patientCount;
+
+    // Handle form submission
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const contact = document.getElementById('contact').value;
+
+      // Simple validation for contact number (10 digits)
+      if (contact.length !== 10) {
+        alert('Contact number must be exactly 10 digits');
+        return;
+      }
+
+      // Increase patient count and update the display
+      patientCount++;
+      localStorage.setItem('patientCount', patientCount);
+      document.getElementById('patientCount').textContent = patientCount;
+
+      // Clear form fields after submission
+      document.getElementById('registrationForm').reset();
+    });
+  </script>
+
+</body>
+</html>

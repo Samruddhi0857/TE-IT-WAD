@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MYCITY - Pune</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f0f8ff;
+    }
+
+    h1.title {
+      font-size: 3rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      color: #2c3e50;
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white !important;
+    }
+
+    .nav-link {
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .shaniwar { color: crimson; font-family: Georgia, serif; }
+    .aga { color: seagreen; font-family: "Courier New", monospace; }
+    .sinhagad { color: navy; font-family: "Lucida Console", sans-serif; }
+
+    .info-box {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .info-box img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 576px) {
+      h1.title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MYCITY</a>
+    </div>
+  </nav>
+  
+  <!-- Title -->
+  <h1 class="title">WELCOME TO PUNE</h1>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarItems">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarItems">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link shaniwar" onclick="showInfo('info1')">Shaniwar Wada</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link aga" onclick="showInfo('info2')">Aga Khan Palace</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sinhagad" onclick="showInfo('info3')">Sinhagad Fort</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Info Display Section -->
+  <div class="container">
+    <div class="info-box" id="info1">
+      <h3 class="shaniwar">Shaniwar Wada</h3>
+      <p>Shaniwar Wada is a historic fort built in 1732, once the seat of the Peshwas.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shaniwarwada_Pune.jpg/640px-Shaniwarwada_Pune.jpg" alt="Shaniwar Wada" />
+    </div>
+    <div class="info-box" id="info2">
+      <h3 class="aga">Aga Khan Palace</h3>
+      <p>Aga Khan Palace is a beautiful historical monument built in 1892 by Sultan Aga Khan III.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Aga_Khan_Palace.JPG" alt="Aga Khan Palace" />
+    </div>
+    <div class="info-box" id="info3">
+      <h3 class="sinhagad">Sinhagad Fort</h3>
+      <p>Sinhagad is a hill fortress located around 30 km from Pune, popular for trekking and history.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Sinhagad_Fort.jpg" alt="Sinhagad Fort" />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center p-3 mt-5">
+    &copy; 2025 MYCITY | Made with 💙 in Pune
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function showInfo(id) {
+      document.querySelectorAll('.info-box').forEach(box => box.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

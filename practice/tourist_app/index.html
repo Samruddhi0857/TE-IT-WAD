@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tourist Places of India</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .carousel img {
+      height: 400px;
+      object-fit: cover;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">Explore Tourist Places of India</h1>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="/agra">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg" class="d-block w-100" alt="Taj Mahal" />
+          </a>
+          <div class="carousel-caption d-none d-md-block text-white">
+            <h5>Agra</h5>
+            <p>Taj Mahal</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="/delhi">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/India_Gate_in_New_Delhi_03-2016_img3.jpg" class="d-block w-100" alt="India Gate" />
+          </a>
+          <div class="carousel-caption d-none d-md-block text-white">
+            <h5>Delhi</h5>
+            <p>India Gate</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="/mumbai">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Gateway_of_India_Mumbai_03.jpg" class="d-block w-100" alt="Gateway of India" />
+          </a>
+          <div class="carousel-caption d-none d-md-block text-white">
+            <h5>Mumbai</h5>
+            <p>Gateway of India</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="/hampi">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Hampi_virupaksha_temple.jpg" class="d-block w-100" alt="Hampi" />
+          </a>
+          <div class="carousel-caption d-none d-md-block text-white">
+            <h5>Hampi</h5>
+            <p>Ancient Temples</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <div class="logo">Company Dashboard</div>
+    <div class="navbar-links">
+      <a href="#home">Home</a>
+      <a href="#analytics">Analytics</a>
+      <a href="#employees">Employees</a>
+      <a href="#projects">Projects</a>
+      <a href="#messages">Messages</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar Toggle Button -->
+    <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
+
+    <!-- Navbar and Search -->
+    <nav class="navbar">
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Search...">
+      </div>
+    </nav>
+
+    <div class="dashboard-content">
+      <!-- Analytics Section -->
+      <section id="analytics">
+        <h2>Company Analytics</h2>
+        <div class="content-row">
+          <div class="analytics-rectangle">
+            <h3>Total Revenue</h3>
+            <p>$2,300,000</p>
+          </div>
+          <div class="analytics-rectangle">
+            <h3>Total Employees</h3>
+            <p>150</p>
+          </div>
+          <div class="analytics-rectangle">
+            <h3>Completed Projects</h3>
+            <p>80</p>
+          </div>
+          <div class="analytics-rectangle">
+            <h3>Pending Tasks</h3>
+            <p>25</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Employees Section -->
+      <section id="employees">
+        <h2>Employees</h2>
+        <div class="content-row">
+          <div class="employee-rectangle">
+            <h3>John Doe</h3>
+            <p>Project Manager</p>
+          </div>
+          <div class="employee-rectangle">
+            <h3>Jane Smith</h3>
+            <p>Lead Developer</p>
+          </div>
+          <div class="employee-rectangle">
+            <h3>Mark Wilson</h3>
+            <p>UI/UX Designer</p>
+          </div>
+          <div class="employee-rectangle">
+            <h3>Emily Davis</h3>
+            <p>HR Specialist</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Projects Section -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="content-row">
+          <div class="project-rectangle">
+            <h3>Website Redesign</h3>
+            <p>Status: In Progress</p>
+          </div>
+          <div class="project-rectangle">
+            <h3>Mobile App Development</h3>
+            <p>Status: Completed</p>
+          </div>
+          <div class="project-rectangle">
+            <h3>Internal CRM Tool</h3>
+            <p>Status: In Progress</p>
+          </div>
+          <div class="project-rectangle">
+            <h3>New Hiring Portal</h3>
+            <p>Status: Planned</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Messages Section -->
+      <section id="messages">
+        <h2>Messages</h2>
+        <div class="content-row">
+          <div class="message-rectangle">
+            <h3>John Doe</h3>
+            <p>Meeting scheduled for next week at 3 PM.</p>
+          </div>
+          <div class="message-rectangle">
+            <h3>Jane Smith</h3>
+            <p>Design review scheduled for tomorrow at 11 AM.</p>
+          </div>
+          <div class="message-rectangle">
+            <h3>Mark Wilson</h3>
+            <p>Updated the project files in the shared drive.</p>
+          </div>
+          <div class="message-rectangle">
+            <h3>Emily Davis</h3>
+            <p>New employee onboarding next week.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

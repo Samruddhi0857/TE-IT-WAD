@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tennis Stars</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .card-img-top {
+      height: 300px;
+      object-fit: cover;
+    }
+    .info-text, .achievements-text {
+      display: none;
+      margin-top: 15px;
+      transition: all 0.3s ease-in-out;
+    }
+    .card-body button {
+      margin: 5px;
+    }
+    .carousel img {
+      object-fit: cover;
+      height: 500px;
+    }
+    .carousel-inner {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* black transparent */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* makes the arrow white */
+  width: 20px;
+  height: 20px;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Tennis Stars</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#carouselSection">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#players">Players</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Carousel -->
+<div class="container my-4" id="carouselSection">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images5.alphacoders.com/816/816149.jpg" class="d-block w-100" alt="Tennis 1">
+      </div>
+      <div class="carousel-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZpuwznyeavMsRAleKxbOiroN_c0I-wuyLfw&s" class="d-block w-100" alt="Tennis 2">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images5.alphacoders.com/816/816149.jpg" class="d-block w-100" alt="Tennis 3">
+      </div>
+    </div>
+  </div>
+
+<!-- Controls -->
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  
+</div>
+
+<!-- Players Section -->
+<div class="container my-5" id="players">
+  <h2 class="text-center mb-4">Famous Players</h2>
+  <div class="row g-4 justify-content-center">
+
+    <!-- Card Template -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Roger_Federer_%282018%29_cropped.jpg" class="card-img-top" alt="Roger Federer">
+        <div class="card-body text-center">
+          <h5 class="card-title">Roger Federer</h5>
+          <button class="btn btn-outline-primary" onclick="showInfo('fed')">Info</button>
+          <button class="btn btn-outline-success" onclick="showAchievements('fed')">Achievements</button>
+          <p class="info-text" id="fed-info">Swiss tennis legend, known for elegance and sportsmanship.</p>
+          <p class="achievements-text" id="fed-achievements">20 Grand Slam titles, 8 Wimbledon titles, Olympic Gold in doubles.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Rafael_Nadal_16_6_2022.jpg" class="card-img-top" alt="Rafael Nadal">
+        <div class="card-body text-center">
+          <h5 class="card-title">Rafael Nadal</h5>
+          <button class="btn btn-outline-primary" onclick="showInfo('nadal')">Info</button>
+          <button class="btn btn-outline-success" onclick="showAchievements('nadal')">Achievements</button>
+          <p class="info-text" id="nadal-info">Spanish tennis player, famous for clay court dominance.</p>
+          <p class="achievements-text" id="nadal-achievements">22 Grand Slam titles, 14 French Opens, Olympic Gold in singles.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Novak_Djokovic_at_the_2023_US_Open.jpg" class="card-img-top" alt="Novak Djokovic">
+        <div class="card-body text-center">
+          <h5 class="card-title">Novak Djokovic</h5>
+          <button class="btn btn-outline-primary" onclick="showInfo('djoko')">Info</button>
+          <button class="btn btn-outline-success" onclick="showAchievements('djoko')">Achievements</button>
+          <p class="info-text" id="djoko-info">Serbian tennis superstar with a complete game and mental strength.</p>
+          <p class="achievements-text" id="djoko-achievements">24 Grand Slam titles, double career Grand Slam, most weeks at World No. 1.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+  &copy; 2025 Tennis Stars. All rights reserved.
+</footer>
+
+<!-- Scripts -->
+<script>
+  function showInfo(playerId) {
+    document.getElementById(playerId + '-info').style.display = 'block';
+    document.getElementById(playerId + '-achievements').style.display = 'none';
+  }
+
+  function showAchievements(playerId) {
+    document.getElementById(playerId + '-info').style.display = 'none';
+    document.getElementById(playerId + '-achievements').style.display = 'block';
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

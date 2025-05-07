@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant App</title>
+
+  <!-- jQuery Mobile & jQuery -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <!-- Custom Styling -->
+  <style>
+    .carousel img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .menu-card {
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .menu-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .navbar {
+      text-align: center;
+    }
+
+    .navbar a {
+      margin: 0 10px;
+    }
+
+    .ui-content ul li {
+      border-bottom: 1px solid #ccc;
+
+      .menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.menu-card {
+  flex: 1 1 calc(25% - 10px);
+  box-sizing: border-box;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .menu-card {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-card {
+    flex: 1 1 100%;
+  }
+}
+
+    }
+  </style>
+</head>
+<body>
+
+<!-- Home Page -->
+<div data-role="page" id="home">
+  <div data-role="header" data-theme="b">
+    <h1>Foodie's Delight</h1>
+    <div class="navbar">
+      <a href="#home" data-role="button" data-icon="home">Home</a>
+      <a href="#menu" data-role="button" data-icon="grid">Menu</a>
+      <a href="#location" data-role="button" data-icon="location">Location</a>
+      <a href="#feedback" data-role="button" data-icon="comment">Feedback</a>
+    </div>
+  </div>
+
+  <div role="main" class="ui-content">
+    <!-- Carousel -->
+    <div class="carousel">
+      <img src="https://source.unsplash.com/800x400/?restaurant" alt="Food 1" />
+      <img src="https://source.unsplash.com/800x400/?dining" alt="Food 2" />
+      <img src="https://source.unsplash.com/800x400/?cuisine" alt="Food 3" />
+    </div>
+
+    <!-- Menu Cards -->
+<!-- Menu Cards Grid -->
+<div class="menu-grid">
+    <div class="menu-card">
+      <a href="#menuDetail" data-transition="slide">
+        <img src="https://source.unsplash.com/400x300/?pizza" alt="Pizza" />
+        <h3>Deluxe Pizza</h3>
+        <p>Serves: 2-3 people</p>
+      </a>
+    </div>
+  
+    <div class="menu-card">
+      <a href="#menuDetail" data-transition="slide">
+        <img src="https://source.unsplash.com/400x300/?burger" alt="Burger" />
+        <h3>Cheesy Burger Combo</h3>
+        <p>Serves: 1 person</p>
+      </a>
+    </div>
+  
+    <div class="menu-card">
+      <a href="#menuDetail" data-transition="slide">
+        <img src="https://source.unsplash.com/400x300/?pasta" alt="Pasta" />
+        <h3>Italian Pasta</h3>
+        <p>Serves: 2 people</p>
+      </a>
+    </div>
+  
+    <div class="menu-card">
+      <a href="#menuDetail" data-transition="slide">
+        <img src="https://source.unsplash.com/400x300/?salad" alt="Salad" />
+        <h3>Fresh Salad</h3>
+        <p>Serves: 1 person</p>
+      </a>
+    </div>
+  </div>
+  
+
+<!-- Menu Detail Page -->
+<div data-role="page" id="menuDetail">
+  <div data-role="header" data-theme="b">
+    <a href="#home" data-icon="back" data-rel="back">Back</a>
+    <h1>Menu Details</h1>
+  </div>
+
+  <div role="main" class="ui-content">
+    <ul data-role="listview">
+      <li><h2>Deluxe Pizza</h2><p>₹400 - Quantity: 1</p></li>
+      <li><h2>Cheesy Burger</h2><p>₹180 - Quantity: 1</p></li>
+      <li><h2>French Fries</h2><p>₹100 - Quantity: 1</p></li>
+      <li><h2>Soft Drink</h2><p>₹50 - Quantity: 1</p></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Location Page -->
+<div data-role="page" id="location">
+  <div data-role="header" data-theme="b">
+    <a href="#home" data-icon="back" data-rel="back">Back</a>
+    <h1>Our Location</h1>
+  </div>
+  <div class="ui-content">
+    <p>We are located at XYZ Street, YourCity.</p>
+    <img src="https://source.unsplash.com/400x300/?map" alt="Map" style="width:100%;" />
+  </div>
+</div>
+
+<!-- Feedback Page -->
+<div data-role="page" id="feedback">
+  <div data-role="header" data-theme="b">
+    <a href="#home" data-icon="back" data-rel="back">Back</a>
+    <h1>Feedback</h1>
+  </div>
+  <div class="ui-content">
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+      <label for="comments">Comments:</label>
+      <textarea name="comments" id="comments"></textarea>
+      <button type="submit" data-role="button" data-theme="b">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- Simple Carousel Rotation (auto-slide) -->
+<script>
+  $(document).on("pagecreate", "#home", function () {
+    let current = 0;
+    const images = $(".carousel img");
+    images.hide().eq(0).show();
+
+    setInterval(() => {
+      images.eq(current).fadeOut(600);
+      current = (current + 1) % images.length;
+      images.eq(current).fadeIn(600);
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>
