@@ -1,133 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Company Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar .logo {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ecf0f1;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      flex: 1;
+      width: 100%;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Toggle Button */
+    .sidebar-toggle {
+      display: none;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 24px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 1100;
+      border-radius: 4px;
+    }
+
+    /* Content Rows */
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .content-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .analytics-rectangle,
+    .employee-rectangle,
+    .project-rectangle,
+    .message-rectangle {
+      background-color: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+
+    /* Mobile/Tablet view */
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.collapsed {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
     <div class="logo">Company Dashboard</div>
-    <div class="navbar-links">
-      <a href="#home">Home</a>
-      <a href="#analytics">Analytics</a>
-      <a href="#employees">Employees</a>
-      <a href="#projects">Projects</a>
-      <a href="#messages">Messages</a>
-    </div>
+    <a href="#home">Home</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#employees">Employees</a>
+    <a href="#projects">Projects</a>
+    <a href="#messages">Messages</a>
   </div>
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Navbar Toggle Button -->
     <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
 
-    <!-- Navbar and Search -->
-    <nav class="navbar">
-      <div class="search-box">
-        <input type="text" id="search" placeholder="Search...">
-      </div>
-    </nav>
-
-    <div class="dashboard-content">
-      <!-- Analytics Section -->
-      <section id="analytics">
-        <h2>Company Analytics</h2>
-        <div class="content-row">
-          <div class="analytics-rectangle">
-            <h3>Total Revenue</h3>
-            <p>$2,300,000</p>
-          </div>
-          <div class="analytics-rectangle">
-            <h3>Total Employees</h3>
-            <p>150</p>
-          </div>
-          <div class="analytics-rectangle">
-            <h3>Completed Projects</h3>
-            <p>80</p>
-          </div>
-          <div class="analytics-rectangle">
-            <h3>Pending Tasks</h3>
-            <p>25</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Employees Section -->
-      <section id="employees">
-        <h2>Employees</h2>
-        <div class="content-row">
-          <div class="employee-rectangle">
-            <h3>John Doe</h3>
-            <p>Project Manager</p>
-          </div>
-          <div class="employee-rectangle">
-            <h3>Jane Smith</h3>
-            <p>Lead Developer</p>
-          </div>
-          <div class="employee-rectangle">
-            <h3>Mark Wilson</h3>
-            <p>UI/UX Designer</p>
-          </div>
-          <div class="employee-rectangle">
-            <h3>Emily Davis</h3>
-            <p>HR Specialist</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Projects Section -->
-      <section id="projects">
-        <h2>Projects</h2>
-        <div class="content-row">
-          <div class="project-rectangle">
-            <h3>Website Redesign</h3>
-            <p>Status: In Progress</p>
-          </div>
-          <div class="project-rectangle">
-            <h3>Mobile App Development</h3>
-            <p>Status: Completed</p>
-          </div>
-          <div class="project-rectangle">
-            <h3>Internal CRM Tool</h3>
-            <p>Status: In Progress</p>
-          </div>
-          <div class="project-rectangle">
-            <h3>New Hiring Portal</h3>
-            <p>Status: Planned</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Messages Section -->
-      <section id="messages">
-        <h2>Messages</h2>
-        <div class="content-row">
-          <div class="message-rectangle">
-            <h3>John Doe</h3>
-            <p>Meeting scheduled for next week at 3 PM.</p>
-          </div>
-          <div class="message-rectangle">
-            <h3>Jane Smith</h3>
-            <p>Design review scheduled for tomorrow at 11 AM.</p>
-          </div>
-          <div class="message-rectangle">
-            <h3>Mark Wilson</h3>
-            <p>Updated the project files in the shared drive.</p>
-          </div>
-          <div class="message-rectangle">
-            <h3>Emily Davis</h3>
-            <p>New employee onboarding next week.</p>
-          </div>
-        </div>
-      </section>
+    <div class="search-box">
+      <input type="text" placeholder="Search..." />
     </div>
+
+    <!-- Sections -->
+    <section id="analytics">
+      <h2>Company Analytics</h2>
+      <div class="content-row">
+        <div class="analytics-rectangle">
+          <h3>Total Revenue</h3>
+          <p>$2,300,000</p>
+        </div>
+        <div class="analytics-rectangle">
+          <h3>Total Employees</h3>
+          <p>150</p>
+        </div>
+        <div class="analytics-rectangle">
+          <h3>Completed Projects</h3>
+          <p>80</p>
+        </div>
+        <div class="analytics-rectangle">
+          <h3>Pending Tasks</h3>
+          <p>25</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="employees">
+      <h2>Employees</h2>
+      <div class="content-row">
+        <div class="employee-rectangle">
+          <h3>John Doe</h3>
+          <p>Project Manager</p>
+        </div>
+        <div class="employee-rectangle">
+          <h3>Jane Smith</h3>
+          <p>Lead Developer</p>
+        </div>
+        <div class="employee-rectangle">
+          <h3>Mark Wilson</h3>
+          <p>UI/UX Designer</p>
+        </div>
+        <div class="employee-rectangle">
+          <h3>Emily Davis</h3>
+          <p>HR Specialist</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="content-row">
+        <div class="project-rectangle">
+          <h3>Website Redesign</h3>
+          <p>Status: In Progress</p>
+        </div>
+        <div class="project-rectangle">
+          <h3>Mobile App Development</h3>
+          <p>Status: Completed</p>
+        </div>
+        <div class="project-rectangle">
+          <h3>Internal CRM Tool</h3>
+          <p>Status: In Progress</p>
+        </div>
+        <div class="project-rectangle">
+          <h3>New Hiring Portal</h3>
+          <p>Status: Planned</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="messages">
+      <h2>Messages</h2>
+      <div class="content-row">
+        <div class="message-rectangle">
+          <h3>John Doe</h3>
+          <p>Meeting scheduled for next week at 3 PM.</p>
+        </div>
+        <div class="message-rectangle">
+          <h3>Jane Smith</h3>
+          <p>Design review scheduled for tomorrow at 11 AM.</p>
+        </div>
+        <div class="message-rectangle">
+          <h3>Mark Wilson</h3>
+          <p>Updated the project files in the shared drive.</p>
+        </div>
+        <div class="message-rectangle">
+          <h3>Emily Davis</h3>
+          <p>New employee onboarding next week.</p>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- JavaScript -->
-  <script src="app.js"></script>
+  <!-- JS -->
+  <script>
+    const toggleBtn = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+    });
+  </script>
 </body>
 </html>
