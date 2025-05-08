@@ -1,86 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <style>
-        .grid-button {
-            width: 100%;
-            margin: 10px 0;
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        .grid-button-orange {
-            background-color: #e67e22;
-        }
-        .ui-grid-a .ui-block-a,
-        .ui-grid-a .ui-block-b {
-            padding: 5px;
-        }
-    </style>
+  <title>Department Grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+    rel="stylesheet"
+    href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
+  />
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    .ui-grid-f > .ui-block-a,
+    .ui-grid-f > .ui-block-b,
+    .ui-grid-f > .ui-block-c,
+    .ui-grid-f > .ui-block-d,
+    .ui-grid-f > .ui-block-e {
+      width: 20%; /* 100/5 columns = 20% */
+    }
+    .dept-title {
+      background-color: #3b6fc0;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .dept-button {
+      background-color: #f58742;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Home Page -->
+<!-- Main Page -->
 <div data-role="page" id="home">
-    <div data-role="header">
-        <h1>Departments</h1>
+  <div data-role="header">
+    <h1>Departments</h1>
+  </div>
+
+  <div data-role="content">
+    <div class="ui-grid-f">
+      <div class="ui-block-a">
+        <div class="dept-title">IT</div>
+        <a href="#itPage" class="dept-button ui-btn">Button</a>
+      </div>
+      <div class="ui-block-b">
+        <div class="dept-title">COMP</div>
+        <a href="#compPage" class="dept-button ui-btn">Button</a>
+      </div>
+      <div class="ui-block-c">
+        <div class="dept-title">ETC</div>
+        <a href="#etcPage" class="dept-button ui-btn">Button</a>
+      </div>
+      <div class="ui-block-d">
+        <div class="dept-title">MECH</div>
+        <a href="#mechPage" class="dept-button ui-btn">Button</a>
+      </div>
+      <div class="ui-block-e">
+        <div class="dept-title">ELECT</div>
+        <a href="#electPage" class="dept-button ui-btn">Button</a>
+      </div>
     </div>
-    <div data-role="content">
-        <div class="ui-grid-a">
-            <div class="ui-block-a"><button class="grid-button" onclick="openDepartmentInfo('IT')">IT</button></div>
-            <div class="ui-block-b"><button class="grid-button" onclick="openDepartmentInfo('COMP')">COMP</button></div>
-        </div>
-        <div class="ui-grid-a">
-            <div class="ui-block-a"><button class="grid-button" onclick="openDepartmentInfo('ETC')">ETC</button></div>
-            <div class="ui-block-b"><button class="grid-button" onclick="openDepartmentInfo('MECH')">MECH</button></div>
-        </div>
-        <div class="ui-grid-a">
-            <div class="ui-block-a"><button class="grid-button" onclick="openDepartmentInfo('ELECT')">ELECT</button></div>
-        </div>
-    </div>
+  </div>
 </div>
 
-<script>
-    function openDepartmentInfo(department) {
-        let departmentInfo = '';
+<!-- IT Page -->
+<div data-role="page" id="itPage">
+  <div data-role="header">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>IT Department</h1>
+  </div>
+  <div data-role="content">
+    <p>Welcome to the Information Technology Department.</p>
+  </div>
+</div>
 
-        // Common "Back to Home" link
-        const backToHomeLink = '<br><a href="index.html">Back to home</a>';
+<!-- COMP Page -->
+<div data-role="page" id="compPage">
+  <div data-role="header">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>Computer Department</h1>
+  </div>
+  <div data-role="content">
+    <p>Welcome to the Computer Engineering Department.</p>
+  </div>
+</div>
 
-        switch (department) {
-            case 'IT':
-                departmentInfo = '<h3>Information Technology Department</h3><p>Details about IT Department...</p>' + backToHomeLink;
-                break;
-            case 'COMP':
-                departmentInfo = '<h3>Computer Science Department</h3><p>Details about Computer Science Department...</p>' + backToHomeLink;
-                break;
-            case 'ETC':
-                departmentInfo = '<h3>Electronics and Telecommunication Department</h3><p>Details about ETC Department...</p>' + backToHomeLink;
-                break;
-            case 'MECH':
-                departmentInfo = '<h3>Mechanical Engineering Department</h3><p>Details about Mechanical Engineering Department...</p>' + backToHomeLink;
-                break;
-            case 'ELECT':
-                departmentInfo = '<h3>Electrical Engineering Department</h3><p>Details about Electrical Engineering Department...</p>' + backToHomeLink;
-                break;
-            default:
-                departmentInfo = '<h3>Department not found</h3>';
-        }
+<!-- ETC Page -->
+<div data-role="page" id="etcPage">
+  <div data-role="header">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>ETC Department</h1>
+  </div>
+  <div data-role="content">
+    <p>Welcome to the Electronics & Telecommunication Department.</p>
+  </div>
+</div>
 
-        // Open a new window/tab with department info
-        const newWindow = window.open();
-        newWindow.document.write('<html><head><title>Department Info</title></head><body>');
-        newWindow.document.write(departmentInfo);
-        newWindow.document.write('</body></html>');
-        newWindow.document.close();  // Necessary to finalize the document in the new window
-    }
-</script>
+<!-- MECH Page -->
+<div data-role="page" id="mechPage">
+  <div data-role="header">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>Mechanical Department</h1>
+  </div>
+  <div data-role="content">
+    <p>Welcome to the Mechanical Engineering Department.</p>
+  </div>
+</div>
+
+<!-- ELECT Page -->
+<div data-role="page" id="electPage">
+  <div data-role="header">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>Electrical Department</h1>
+  </div>
+  <div data-role="content">
+    <p>Welcome to the Electrical Engineering Department.</p>
+  </div>
+</div>
 
 </body>
 </html>
