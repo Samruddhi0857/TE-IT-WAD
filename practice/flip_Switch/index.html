@@ -5,18 +5,31 @@
     <!-- ✅ Correct jQuery version -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- jQuery Mobile -->
+    <head>
+    <title>Feedback Form</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- ✅ jQuery Mobile base CSS (first) -->
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- ✅ Your custom theme (after default CSS) -->
+    <link rel="stylesheet" href="custom.css">
+
+    <!-- jQuery Mobile JS -->
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 
 <!-- Page -->
-<div data-role="page" id="feedbackPage">
+<div data-role="page" id="feedbackPage" data-theme="b">
     <div data-role="header">
         <h1>Feedback Form</h1>
     </div>
 
-    <div data-role="content">
+    <div data-role="content" data-theme="b">
         <form>
             <label for="name">Name:</label>
             <input type="text" name="name" id="name">
@@ -26,12 +39,12 @@
 
             <!-- ✅ Toggle switch -->
             <label for="recommend">Recommend us?</label>
-            <select name="recommend" id="recommend" data-role="slider">
+            <select name="recommend" id="recommend" data-role="slider" data-theme="b">
                 <option value="no">No</option>
                 <option value="yes">Yes</option>
             </select>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" data-theme="b">
         </form>
     </div>
 </div>
