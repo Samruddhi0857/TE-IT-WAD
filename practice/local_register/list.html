@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <title>Registered Users</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -19,18 +34,34 @@
     if (users.length === 0) {
       userList.innerHTML = "<p>No users registered yet.</p>";
     } else {
+      // Create table and header
+      const table = document.createElement("table");
+      table.innerHTML = `
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>Gender</th>
+          <th>Mobile</th>
+          <th>Email</th>
+        </tr>
+      `;
+
+      // Populate rows
       users.forEach((user, index) => {
-        const div = document.createElement("div");
-        div.className = "user-card";
-        div.innerHTML = `
-          <p><strong>Name:</strong> ${user.firstName} ${user.lastName}</p>
-          <p><strong>DOB:</strong> ${user.dob}</p>
-          <p><strong>Gender:</strong> ${user.gender}</p>
-          <p><strong>Mobile:</strong> ${user.mobile}</p>
-          <p><strong>Email:</strong> ${user.email}</p>
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${user.firstName} ${user.lastName}</td>
+          <td>${user.dob}</td>
+          <td>${user.gender}</td>
+          <td>${user.mobile}</td>
+          <td>${user.email}</td>
         `;
-        userList.appendChild(div);
+        table.appendChild(row);
       });
+
+      userList.appendChild(table);
     }
   </script>
 </body>
