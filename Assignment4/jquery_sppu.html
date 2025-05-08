@@ -1,118 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SPPU - Savitribai Phule Pune University</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPPU TE-IT Syllabus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
+    html {
+      scroll-behavior: smooth;
     }
-    header {
-      background: teal;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-    nav {
-      background: #006666;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 10px 0;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-    }
-    .banner {
-      width: 100%;
-      height: auto;
-    }
-    .section {
-      padding: 15px;
-    }
-    .section h3 {
-      border-bottom: 2px solid teal;
-      padding-bottom: 5px;
-    }
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .grid div {
-      background: #f2f2f2;
-      padding: 10px;
-      flex: 1 1 30%;
-      border-radius: 5px;
-    }
-    footer {
-      background: #004d4d;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-    }
-    @media(max-width: 768px) {
-      .grid div {
-        flex: 1 1 100%;
-      }
-    }
+    html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .syllabus-details {
+    display: none;
+  }
   </style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-<header>
-  <h1>Savitribai Phule Pune University</h1>
-  <p>सावित्रीबाई फुले पुणे विद्यापीठ</p>
-</header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">TE-IT Syllabus</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#dsbda-section">DSBDA</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cns-section">CNS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#wad-section">WAD</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cc-section">CC</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">About</a>
-  <a href="#">Academics</a>
-  <a href="#">Research</a>
-  <a href="#">Contact</a>
-</nav>
-
-<img src="https://unipune.ac.in/images/1.jpg" alt="SPPU Banner" class="banner">
-
-<div class="section">
-  <h3>Quick Links</h3>
-  <div class="grid">
-    <div>Admissions</div>
-    <div>Syllabi</div>
-    <div>Examination</div>
-    <div>Scholarships</div>
-    <div>Finance & Accounts</div>
-    <div>Sports Section</div>
-    <div>SET Exam</div>
-    <div>Job Openings</div>
-    <div>Library</div>
+  <!-- Header -->
+  <div class="header text-center py-4 bg-secondary text-white">
+    <h1>SPPU TE-IT Semester Syllabus</h1>
+    <p>Click the buttons below to view detailed syllabus for each subject</p>
   </div>
-</div>
 
-<div class="section">
-  <h3>Research Publications (2011 - Onwards)</h3>
-  <div class="grid">
-    <div><strong>Publications</strong><br>Journal Articles (8015)<br>Books (579)<br>Chapters (962)<br>Conference (1133)</div>
-    <div><strong>Teachers</strong><br>Sastry Tamma<br>Tupe Navnath<br>Kumbhar Avinash</div>
-    <div><strong>Departments</strong><br>Environmental Sciences<br>Economics<br>Management</div>
-  </div>
-</div>
+  <!-- Subject Sections -->
+  <main class="container my-4 flex-grow-1">
+    <section id="dsbda-section" class="mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">DSBDA</h3>
+          <button class="btn btn-primary" onclick="toggleDetails('dsbda', this)">Show Details</button>
+          <div id="dsbda" class="syllabus-details mt-3">
+            <ul>
+              <li>Data Science Basics</li>
+              <li>Exploratory Data Analysis</li>
+              <li>Data Preprocessing</li>
+              <li>Modeling Techniques</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="section">
-  <h3>Press Release</h3>
-  <p>सुरक्षा आणि राष्ट्रवाद या विषयावर राष्ट्रीय परिसंवाद संपन्न</p>
-  <a href="#">View All Press Releases</a>
-</div>
+    <section id="cns-section" class="mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">CNS</h3>
+          <button class="btn btn-primary" onclick="toggleDetails('cns', this)">Show Details</button>
+          <div id="cns" class="syllabus-details mt-3">
+            <ul>
+              <li>Cryptography Fundamentals</li>
+              <li>Symmetric & Asymmetric Encryption</li>
+              <li>Network Security Protocols</li>
+              <li>Cyber Security Principles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>&copy; 2025 Savitribai Phule Pune University</p>
-</footer>
+    <section id="wad-section" class="mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">WAD</h3>
+          <button class="btn btn-primary" onclick="toggleDetails('wad', this)">Show Details</button>
+          <div id="wad" class="syllabus-details mt-3">
+            <ul>
+              <li>HTML, CSS, JavaScript</li>
+              <li>Backend Technologies</li>
+              <li>Database Integration</li>
+              <li>Deployment Techniques</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="cc-section" class="mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">CC</h3>
+          <button class="btn btn-primary" onclick="toggleDetails('cc', this)">Show Details</button>
+          <div id="cc" class="syllabus-details mt-3">
+            <ul>
+              <li>Cloud Concepts</li>
+              <li>Service Models (IaaS, PaaS, SaaS)</li>
+              <li>Deployment Models</li>
+              <li>Virtualization and Containers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white text-center py-3 mt-auto">
+    &copy; 2025 SPPU TE-IT | Designed for academic demonstration
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleDetails(id, btn) {
+    const section = document.getElementById(id);
+    if (section.style.display === "block") {
+      section.style.display = "none";
+      btn.textContent = "Show Details";
+    } else {
+      section.style.display = "block";
+      btn.textContent = "Hide Details";
+    }
+  }
+  
+  </script>
 </body>
 </html>
