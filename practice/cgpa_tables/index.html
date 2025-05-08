@@ -66,3 +66,132 @@
   </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+//part2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Info</title>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    // Function to add student data to tables
+    function addStudentData(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get values from the form
+      const name = document.getElementById("name").value;
+      const result = document.getElementById("result").value;
+      const cgpa = document.getElementById("cgpa").value;
+
+      // Create new rows for the tables
+      const resultRow = document.createElement("tr");
+      const cgpaRow = document.createElement("tr");
+
+      // Add data to the result table
+      resultRow.innerHTML = `<td>${name}</td><td>${result}</td>`;
+      document.getElementById("resultTable").appendChild(resultRow);
+
+      // Add data to the CGPA table
+      cgpaRow.innerHTML = `<td>${name}</td><td>${cgpa}</td>`;
+      document.getElementById("cgpaTable").appendChild(cgpaRow);
+
+      // Reset the form
+      document.getElementById("studentForm").reset();
+    }
+  </script>
+</head>
+<body>
+  <h1 class="header">Student Information</h1>
+
+  <!-- Form for entering student data -->
+  <div class="form-container">
+    <h2>Enter Student Details</h2>
+    <form id="studentForm" onsubmit="addStudentData(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required><br><br>
+
+      <label for="result">Result:</label>
+      <select id="result" required>
+        <option value="Pass">Pass</option>
+        <option value="Fail">Fail</option>
+      </select><br><br>
+
+      <label for="cgpa">CGPA:</label>
+      <input type="number" id="cgpa" step="0.1" min="0" max="10" required><br><br>
+
+      <button type="submit">Add Student</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <!-- Left Table -->
+    <div class="table-container left">
+      <h2>Result Status</h2>
+      <table>
+        <tr><th>Name</th><th>Result</th></tr>
+        <tbody id="resultTable">
+          <!-- New rows will be added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Right Table -->
+    <div class="table-container right">
+      <h2>CGPA</h2>
+      <table>
+        <tr><th>Name</th><th>CGPA</th></tr>
+        <tbody id="cgpaTable">
+          <!-- New rows will be added here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Info</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1 class="header">Student Information</h1>
+  <div class="container">
+   
+    <div class="table-container left">
+      <h2>Result Status</h2>
+      <table>
+        <tr><th>Name</th><th>Result</th></tr>
+        <tr><td>Aarav</td><td>Pass</td></tr>
+        <tr><td>Anika</td><td>Fail</td></tr>
+        <tr><td>Rahul</td><td>Pass</td></tr>
+      </table>
+    </div>
+
+    <div class="table-container right">
+      <h2>CGPA</h2>
+      <table>
+        <tr><th>Name</th><th>CGPA</th></tr>
+        <tr><td>Aarav</td><td>8.7</td></tr>
+        <tr><td>Anika</td><td>5.4</td></tr>
+        <tr><td>Rahul</td><td>9.1</td></tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
